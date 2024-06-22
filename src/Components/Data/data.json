@@ -7,7 +7,7 @@
       "bedrooms": 3,
       "price": 750000,
       "tenure": "Freehold",
-      "description": "Attractive three bedroom semi-detached family home situated within 0.5 miles of Petts Wood station with fast trains to London and within easy walking distance of local shops, schools, bus routes and National Trust woodland. The property comprises; two receptions, fitted 18'9 x 10'1 kitchen/breakfast room and conservatory. The property also benefits from having a utility room and cloakroom. To the first floor there are three bedrooms and a family bathroom with separate WC. Additional features include double glazing, gas central heating and a well presented interior...",
+      "description": "Welcome to Club House, a charming three-bedroom semi-detached family home located in the sought-after area of Petts Wood. This attractive property is situated within 0.5 miles of Petts Wood station, providing fast trains to London, and is within easy walking distance of local shops, schools, bus routes, and the scenic National Trust woodland. Attractive three bedroom semi-detached family home situated within 0.5 miles of Petts Wood station with fast trains to London and within easy walking distance of local shops, schools, bus routes and National Trust woodland. The property comprises; two receptions, fitted 18'9 x 10'1 kitchen/breakfast room and conservatory. The property also benefits from having a utility room and cloakroom. To the first floor there are three bedrooms and a family bathroom with separate WC. Additional features include double glazing, gas central heating and a well presented interior Club House is a superb family home that combines modern living with convenience and charm. With its spacious interior, excellent location, and additional features, it is perfect for those seeking a comfortable and stylish residence in Petts Wood. Don’t miss the opportunity to make this your dream home. ",
       "location": "Petts Wood Road, Petts Wood.",
       "picture": "../images/prop1.jpg",
       "floorPlan": "../images/floorPlan1.jpg",
@@ -75,13 +75,13 @@
         "year": 2022
       },
       "gallery": [
-        "images/gallery3_1.jpg",
-        "images/gallery3_2.jpg",
-        "images/gallery3_3.jpg",
-        "images/gallery3_4.jpg",
-        "images/gallery3_5.jpg",
-        "images/gallery3_6.jpg",
-        "../images/gallery7.webp"
+        "../images/gallery3_1.jpeg",
+        "../images/gallery3_2.jpeg",
+        "../images/gallery3_3.jpeg",
+        "../images/gallery3_4.jpeg",
+        "../images/gallery3_5.jpeg",
+        "../images/gallery3_6.jpeg",
+        "../images/gallery3_7.jpeg"
       ]
     },
     {
@@ -131,13 +131,13 @@
         "year": 2023
       },
       "gallery": [
-        "images/gallery5_1.jpg",
-        "images/gallery5_2.jpg",
-        "images/gallery5_3.jpg",
-        "images/gallery5_4.jpg",
-        "images/gallery5_5.jpg",
-        "images/gallery5_6.jpg",
-        "../images/gallery7.webp"
+        "../images/gallery5_1.jpeg",
+        "../images/gallery5_2.jpeg",
+        "../images/gallery5_3.jpeg",
+        "../images/gallery5_4.jpeg",
+        "../images/gallery5_5.jpeg",
+        "../images/gallery5_6.jpeg",
+        "../images/gallery5_7.jpeg"
       ]
     },
     {
@@ -163,8 +163,8 @@
         "../images/gallery6_2.jpg",
         "../images/gallery6_3.jpg",
         "../images/gallery6_4.jpg",
-        "images/gallery6_5.jpg",
-        "images/gallery6_6.jpg",
+        "../images/gallery6_5.jpg",
+        "../images/gallery6_6.jpg",
         "../images/gallery7.webp"
       ]
     },
