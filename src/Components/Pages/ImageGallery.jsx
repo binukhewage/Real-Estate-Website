@@ -38,7 +38,6 @@ export default function ImageGallery() {
       <Navbar />
       <div className="heading">
         <h1>{selectedProperty.name}</h1>
-        <h2>${selectedProperty.price}</h2>
         <p className="location">
           <i className="fas fa-map-marker-alt"></i>
           <span> {selectedProperty.location}</span>
@@ -72,6 +71,13 @@ export default function ImageGallery() {
                 <div className="description">
                   <h2>{selectedProperty.name}</h2>
                   <p>{selectedProperty.description}</p>
+                  <br></br>
+                  <div className="property-details">
+                    <h5>$ {selectedProperty.price}</h5>
+                    <h5><i className="fas fa-bed"></i> {selectedProperty.bedrooms} BedRooms</h5>
+                    <h5><i className="fas fa-building"></i> {selectedProperty.tenure} Tenure</h5>
+                  </div>
+                  
                 </div>  
               </TabPanel>
               <TabPanel>

@@ -112,9 +112,7 @@ body, html {
 }
 
 .react-tabs__tab:focus {
-    box-shadow: 0 0 5px hsl(208, 99%, 50%);
-    border-color: hsl(208, 99%, 50%);
-    outline: none;
+
 }
 
 .react-tabs__tab-panel {
@@ -125,10 +123,22 @@ body, html {
     display: block;
 }
 
+.description {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Ensures the property details are at the bottom */
+    height: 100%; /* Ensure it takes the full height of the parent */
+}
 
+.description h2 {
+    display: flex;
+    margin-left: 25px;
+}
 
 .description p {
     color: black;
+    font-size: 20px;
+    line-height: 1.5;
 }
 
 .tab-content {
@@ -151,4 +161,18 @@ body, html {
 .tab-content iframe {
     width: 100%; /* Increase the width to fit the tab */
     height: 100%; /* Increase the height to fit the tab */
+}
+
+.property-details {
+    display: flex; /* Use flexbox to layout the child elements */
+    gap: 100px; /* Optional: Adds space between the h5 elements */
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.property-details h5 {
+    margin-top: 90px;
+    color: #478e13;
+    font-size: 20px;
 }
