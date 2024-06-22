@@ -1,0 +1,154 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.heading {
+    text-align: left;
+    padding: 20px;
+    width: 100%;
+}
+
+.desbox {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    position: relative;
+}
+
+.all-images {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+    height: 650px;
+    padding-top: 0.5%;
+    background-color: white;
+    border-radius: 5px;
+    margin-left: 2%; /* Adjust the left margin to create space on the left */
+}
+
+.large-image {
+    margin: auto;
+    width: 98%;
+    height: 85%;
+}
+
+.thumbnail-image-panel {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    column-gap: 0.3%;
+    margin: auto;
+    width: 98%;
+    height: 15%;
+}
+
+.thumbnail-image {
+    margin: auto;
+    height: 85%;
+    width: 100%;
+    transition: 0.5s ease;
+}
+
+.thumbnail-image:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+.thumbnail-image, .large-image {
+    background-size: cover;
+}
+
+.heading h1 {
+    color: white;
+    margin-left: 30px;
+    margin-top: 20px;
+}
+
+.heading p {
+    color: white;
+    margin-left: 30px;
+    margin-top: 5px;
+}
+
+.tabs-container {
+    width: 45%;
+    background-color: white;
+    border-radius: 5px;
+    padding: 20px;
+    margin-left: auto; /* Ensures the tabs are aligned to the right of the container */
+}
+
+/* react-tabs CSS overrides */
+.react-tabs__tab-list {
+    border-bottom: 1px solid #ccc;
+    padding: 0;
+    margin: 0 0 10px 0;
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+}
+
+.react-tabs__tab {
+    display: inline-block;
+    border: 1px solid transparent;
+    border-bottom: none;
+    bottom: -1px;
+    position: relative;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.react-tabs__tab--selected {
+    background: white;
+    border-color: #ccc;
+    border-radius: 5px 5px 0 0;
+}
+
+.react-tabs__tab--disabled {
+    color: Gray;
+    cursor: default;
+}
+
+.react-tabs__tab:focus {
+    box-shadow: 0 0 5px hsl(208, 99%, 50%);
+    border-color: hsl(208, 99%, 50%);
+    outline: none;
+}
+
+.react-tabs__tab-panel {
+    display: none;
+}
+
+.react-tabs__tab-panel--selected {
+    display: block;
+}
+
+
+
+.description p {
+    color: black;
+}
+
+.tab-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 500px; /* Increase the height */
+    overflow: hidden;
+    position: relative;
+}
+
+.tab-content img, .tab-content iframe {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+}
+
+.tab-content iframe {
+    width: 100%; /* Increase the width to fit the tab */
+    height: 100%; /* Increase the height to fit the tab */
+}

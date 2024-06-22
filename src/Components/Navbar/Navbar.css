@@ -1,0 +1,40 @@
+.navtitle{
+    font-weight: 700;
+    font-size: 2rem;
+    margin: 5px;
+
+}
+
+.navbar{
+    background-color: #131110;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    gap: 2rem ;
+    color: white;
+}
+
+.navbar ul{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    gap: 3rem;
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.navbar li:hover{
+    color: #478e13;
+}
+
+.navbar a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.lg{
+    color: #478e13;
+}
+

@@ -1,0 +1,118 @@
+.homewrapper{
+    color: white;
+    position: relative;
+    background-color: #131110;
+    padding-bottom: 2rem;
+}
+
+.homecontainer{
+    justify-content: space-around;
+    align-items: flex-end;
+}
+
+.homeimagecontainer{
+    width: 30rem;
+    height: 40rem;
+    overflow: hidden;
+    border-radius: 15rem 15rem  0 0 ;
+    border: 8px solid #478e13;
+    
+    margin-left: 30px;    
+}
+
+.homeimagecontainer>img{
+    width: 100%;
+    height: 100%;
+
+}
+
+/* LEFT SIDE */
+
+.homeleft{
+    gap: 3rem;
+}
+
+.hometitle{
+    position: relative;
+    z-index: 1;
+    
+}
+
+.hometitle h1{
+    font-weight: bold;
+    font-size: 3.8rem ;
+    line-height: 4rem;
+
+}
+
+.orangecircle {
+    height: 4rem;
+    width: 4rem;
+    background-color: orange;
+    border-radius: 999px;
+    position: absolute;
+    right: 28%;
+    top: -10%;
+    z-index: -1;
+}
+
+
+.homebtn{
+    padding: 10px 20px;
+    background: #478e13;
+    border-radius: 40px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 1px;
+    box-shadow: 0 0 10px #088f0a;
+    transition: 0.5s;
+    
+}
+
+.homebtn:hover{
+    box-shadow: none;
+}
+
+.homedes{
+    margin: 30px 200px 30px 0px;
+    color: grey;
+}
+
+
+
+
+
+/* CNAMES */
+.paddings {
+    padding: 1.5rem;
+}
+.innerWidth {
+    width: 100%;
+}
+
+.flexCenter {
+    display: flex;
+    row-gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+}
+
+.flexStart {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.flexColCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+
+

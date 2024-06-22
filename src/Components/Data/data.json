@@ -1,0 +1,200 @@
+{
+  "properties": [
+    {
+      "name": "Club House",
+      "id": "prop1",
+      "type": "House",
+      "bedrooms": 3,
+      "price": 750000,
+      "tenure": "Freehold",
+      "description": "Attractive three bedroom semi-detached family home situated within 0.5 miles of Petts Wood station with fast trains to London and within easy walking distance of local shops, schools, bus routes and National Trust woodland. The property comprises; two receptions, fitted 18'9 x 10'1 kitchen/breakfast room and conservatory. The property also benefits from having a utility room and cloakroom. To the first floor there are three bedrooms and a family bathroom with separate WC. Additional features include double glazing, gas central heating and a well presented interior...",
+      "location": "Petts Wood Road, Petts Wood.",
+      "picture": "../images/prop1.jpg",
+      "floorPlan": "../images/floorPlan1.jpg",
+      "mapLocation": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d243647.249902405!2d-0.38177992475022536!3d51.52855777370054!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761cb2046ea4b3%3A0x942c8bb9d77e6f17!2sPetts%20Wood%20Rd%2C%20Petts%20Wood%2C%20Orpington%20BR5%201JR%2C%20UK!5e0!3m2!1sen!2sus!4v1597713398411!5m2!1sen!2sus",
+      "url": "properties/prop1.html",
+      "added": {
+        "month": "October",
+        "day": 12,
+        "year": 2022
+      },
+      "gallery": [
+        "../images/gallery1.webp",
+        "../images/gallery2.jpg",
+        "../images/gallery3.jpg",
+        "../images/gallery4.jpg",
+        "../images/gallery5.jpg",
+        "../images/gallery6.jpg",
+        "../images/gallery7.webp"
+      ]
+    },
+    {
+      "name": "Modern Apartment",
+      "id": "prop2",
+      "type": "Flat",
+      "bedrooms": 2,
+      "price": 400000,
+      "tenure": "Freehold",
+      "description": "Presented in excellent decorative order throughout is this two double bedroom, two bathroom, garden flat. The modern fitted kitchen is open plan to the living room which boasts solid wooden floors and includes integrated appliances including a dishwasher & a washing machine. This large open plan benefits from bi folding doors onto a secluded private courtyard garden. Both bedrooms are double sized, and the family bathroom boasts a matching three piece suite a shower attachment over the bath. There is also a separate wet room. There are walnut doors throughout and wiring for Sky TV/aerial points in the living room/kitchen and both bedrooms.<br>This apartment being only five years old, is still under a 10 year building guarantee...",
+      "location": "Crofton Road Orpington BR6",
+      "picture": "../images/prop2.jpg",
+      "floorPlan": "../images/floorPlan2.png",
+      "mapLocation": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d243647.249902405!2d-0.38177992475022536!3d51.52855777370054!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761cb2046ea4b3%3A0x942c8bb9d77e6f17!2sCrofton%20Rd%2C%20Orpington%20BR6%208ER%2C%20UK!5e0!3m2!1sen!2sus!4v1597713398411!5m2!1sen!2sus",
+      "url": "properties/prop2.html",
+      "added": {
+        "month": "September",
+        "day": 14,
+        "year": 2022
+      },
+      "gallery": [
+        "../images/gallery2_1.jpg",
+        "../images/gallery2_2.jpeg",
+        "../images/gallery2_3.jpg",
+        "../images/gallery2_4.webp",
+        "../images/gallery2_5.jpg",
+        "../images/gallery2_6.jpg",
+        "../images/gallery2_7.webp"
+      ]
+    },
+    {
+      "name": "Family Home",
+      "id": "prop3",
+      "type": "House",
+      "bedrooms": 4,
+      "price": 820000,
+      "tenure": "Freehold",
+      "description": "Spacious four-bedroom family home in a quiet suburban neighborhood. Close to schools, parks, and public transportation. The property features a modern kitchen, two bathrooms, and a lovely backyard. Perfect for growing families.",
+      "location": "Green Street, Greenfield",
+      "picture": "../images/prop8.jpg",
+      "floorPlan": "../images/floorPlan3.jpeg",
+      "mapLocation": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d243647.249902405!2d-0.38177992475022536!3d51.52855777370054!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761cb2046ea4b3%3A0x942c8bb9d77e6f17!2sGreen%20St%2C%20Greenfield%2C%20UK!5e0!3m2!1sen!2sus!4v1597713398411!5m2!1sen!2sus",
+      "url": "properties/prop3.html",
+      "added": {
+        "month": "November",
+        "day": 18,
+        "year": 2022
+      },
+      "gallery": [
+        "images/gallery3_1.jpg",
+        "images/gallery3_2.jpg",
+        "images/gallery3_3.jpg",
+        "images/gallery3_4.jpg",
+        "images/gallery3_5.jpg",
+        "images/gallery3_6.jpg",
+        "../images/gallery7.webp"
+      ]
+    },
+    {
+      "name": "City Apartment",
+      "id": "prop4",
+      "type": "Flat",
+      "bedrooms": 2,
+      "price": 550000,
+      "tenure": "Leasehold",
+      "description": "Modern two-bedroom apartment in the heart of the city. Close to shopping centers, restaurants, and public transit. The flat offers an open-plan living space, contemporary kitchen, and a balcony with city views.",
+      "location": "City Center Avenue, Urbanville",
+      "picture": "../images/prop4.jpg",
+      "floorPlan": "../images/floorPlan4.jpg",
+      "mapLocation": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d243647.249902405!2d-0.38177992475022536!3d51.52855777370054!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761cb2046ea4b3%3A0x942c8bb9d77e6f17!2sCity%20Center%20Avenue%2C%20Urbanville%2C%20UK!5e0!3m2!1sen!2sus!4v1597713398411!5m2!1sen!2sus",
+      "url": "properties/prop4.html",
+      "added": {
+        "month": "December",
+        "day": 5,
+        "year": 2022
+      },
+      "gallery": [
+        "../images/gallery4_1.jpg",
+        "../images/gallery4_2.jpg",
+        "../images/gallery4_3.jpg",
+        "../images/gallery4_4.jpg",
+        "../images/gallery4_5.jpeg",
+        "../images/gallery4_6.jpg",
+        "../images/gallery4_7.jpg"
+      ]
+    },
+    {
+      "name": "Luxury Mansion",
+      "id": "prop5",
+      "type": "House",
+      "bedrooms": 5,
+      "price": 820000,
+      "tenure": "Freehold",
+      "description": "Elegant five-bedroom house with a spacious garden in an upscale neighborhood. The property boasts a gourmet kitchen, multiple living areas, and a master suite with a luxurious bathroom. Ideal for those seeking luxury living.",
+      "location": "Mansion Lane, Prestige Estates",
+      "picture": "../images/prop5.jpg",
+      "floorPlan": "../images/floorPlan5.jpg",
+      "mapLocation": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d243647.249902405!2d-0.38177992475022536!3d51.52855777370054!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761cb2046ea4b3%3A0x942c8bb9d77e6f17!2sMansion%20Lane%2C%20Prestige%20Estates%2C%20UK!5e0!3m2!1sen!2sus!4v1597713398411!5m2!1sen!2sus",
+      "url": "properties/prop5.html",
+      "added": {
+        "month": "January",
+        "day": 15,
+        "year": 2023
+      },
+      "gallery": [
+        "images/gallery5_1.jpg",
+        "images/gallery5_2.jpg",
+        "images/gallery5_3.jpg",
+        "images/gallery5_4.jpg",
+        "images/gallery5_5.jpg",
+        "images/gallery5_6.jpg",
+        "../images/gallery7.webp"
+      ]
+    },
+    {
+      "name": "Cosy Apartment",
+      "id": "prop6",
+      "type": "Flat",
+      "bedrooms": 1,
+      "price": 380000,
+      "tenure": "Leasehold",
+      "description": "Charming one-bedroom flat with a modern interior. Located in a vibrant neighborhood with trendy cafes and boutiques. The flat includes a cozy bedroom, stylish kitchen, and a balcony overlooking the city.",
+      "location": "Fashion Street, Trendytown",
+      "picture": "../images/prop6.jpg",
+      "floorPlan": "../images/floorPlan6.jpg",
+      "mapLocation": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d243647.249902405!2d-0.38177992475022536!3d51.52855777370054!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761cb2046ea4b3%3A0x942c8bb9d77e6f17!2sFashion%20Street%2C%20Trendytown%2C%20UK!5e0!3m2!1sen!2sus!4v1597713398411!5m2!1sen!2sus",
+      "url": "properties/prop6.html",
+      "added": {
+        "month": "February",
+        "day": 8,
+        "year": 2023
+      },
+      "gallery": [
+        "../images/gallery6_1.jpg",
+        "../images/gallery6_2.jpg",
+        "../images/gallery6_3.jpg",
+        "../images/gallery6_4.jpg",
+        "images/gallery6_5.jpg",
+        "images/gallery6_6.jpg",
+        "../images/gallery7.webp"
+      ]
+    },
+    {
+      "name": "Contemporary House",
+      "id": "prop7",
+      "type": "House",
+      "bedrooms": 4,
+      "price": 890000,
+      "tenure": "Freehold",
+      "description": "Contemporary four-bedroom house with a sleek design and panoramic views. Situated in a modern residential development with access to amenities and green spaces. The property features an open-plan kitchen, a private terrace, and a master suite.",
+      "location": "Horizon Drive, Horizon Heights",
+      "picture": "../images/prop7.jpg",
+      "floorPlan": "../images/floorPlan7.jpeg",
+      "mapLocation": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d243647.249902405!2d-0.38177992475022536!3d51.52855777370054!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761cb2046ea4b3%3A0x942c8bb9d77e6f17!2sHorizon%20Drive%2C%20Horizon%20Heights%2C%20UK!5e0!3m2!1sen!2sus!4v1597713398411!5m2!1sen!2sus",
+      "url": "properties/prop7.html",
+      "added": {
+        "month": "March",
+        "day": 22,
+        "year": 2023
+      },
+      "gallery": [
+        "../images/gallery7_1.jpg",
+        "../images/gallery7_2.jpg",
+        "../images/gallery7_3.jpg",
+        "../images/gallery7_4.jpg",
+        "../images/gallery7_5.jpg",
+        "../images/gallery7_6.jpg",
+        "../images/gallery7.webp"
+      ]
+    }
+  ]
+}

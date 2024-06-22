@@ -1,0 +1,237 @@
+* {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin: 0;    
+    padding: 0;
+    box-sizing: border-box;
+}
+.properties {
+    margin: 0;
+}
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;    
+    background-color:  #131110;
+}
+.title {
+    text-align: center;
+    color: #fff;
+    margin-top: 30px;    
+}
+
+.box-container {
+    margin-left: 100px;
+    margin-top: 50px;
+    align-items: center;
+}
+.properties .box-container {
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    gap: 20px;
+}
+.image-box {
+    height: 300px;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+}
+.btn {
+    padding: 10px 100px;
+    background: #478e13;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 1px;
+    box-shadow: none;
+    transition: 0.5s;
+    margin-top: 20px;
+}
+.btn:hover {
+    box-shadow: 0 0 10px #478e13;
+}
+.propboxes {
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    overflow-x: hidden;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    
+}
+.box-container .propboxes .thumb {
+    position: relative;
+    height: 20rem;
+    overflow: hidden;
+    margin: 1.5rem 0;
+}
+.propboxes:hover {
+    transform: scale(1.05);
+    transition: 1s;
+    border-radius: 10px;
+}
+.save {
+    position: absolute;
+    top: 1rem;
+    right: 0.5rem;
+    z-index: 1;
+    color: #fff;
+}
+.save button:hover {
+    background-color: rgb(255, 0, 0);
+}
+.name {
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+    margin-bottom: 10px;
+    color:#3c7310;
+}
+
+.property_name{
+  margin-bottom: 10px;
+}
+
+.location {
+    color: grey;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.location i {
+    margin-right: 0.5rem;
+    color: #478e13;
+    margin-bottom: 10px;
+}
+.flex { 
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-right: 50px;
+}
+.price {
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+.srow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: #478e13 1px solid;
+    border-radius: 10px;
+}
+.srow .form-label {
+    color: #fff;
+    font-size: 14pt;
+    margin-bottom: 5px;
+}
+.form-select {
+    padding: 3px;
+}
+.form-control {
+    padding: 3px;
+}
+.col-md-2 {
+    padding: 10px;
+}
+.col-md-2 div {
+    display: grid;
+}
+.sbtn {
+    margin-top: 2px;
+}
+
+.date-added {
+    font-size: 0.9em;
+    color: #666;
+  }
+  
+
+
+/* ----------- search css ----------- */
+
+.search {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .search-fields {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .search-fields input[type="text"],
+  .search-fields input[type="number"],
+  .search-fields input[type="date"],
+  .search-fields button {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .search-fields button {
+    background-color: #478e13;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .search-fields button:hover {
+    background-color: #3c7310;
+  }
+  
+  .name {
+    margin-bottom: 5px;
+  }
+  
+  .location {
+    color: grey;
+    margin-bottom: 5px;
+  }
+  
+  .flex {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+  }
+  
+  .price {
+    margin-top: 10px;
+  }
+  
+  .btn {
+    display: block;
+    padding: 10px 20px;
+    background-color: #478e13;
+    color: white;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 10px;
+  }
+  
+  .btn:hover {
+    background-color: #3c7310;
+  }
+
+  .search-fields select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+  }
+  
+  
+  .search-fields button {
+    background-color: #478e13;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .search-fields button:hover {
+    background-color: #3c7310;
+  }
+  
