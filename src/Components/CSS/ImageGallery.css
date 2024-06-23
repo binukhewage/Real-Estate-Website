@@ -111,10 +111,6 @@ body, html {
     cursor: default;
 }
 
-.react-tabs__tab:focus {
-
-}
-
 .react-tabs__tab-panel {
     display: none;
 }
@@ -133,10 +129,13 @@ body, html {
 .description h2 {
     display: flex;
     margin-left: 25px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    color: rgb(93, 90, 90);
 }
 
 .description p {
-    color: black;
+    color: grey;
     font-size: 20px;
     line-height: 1.5;
 }
@@ -159,8 +158,8 @@ body, html {
 }
 
 .tab-content iframe {
-    width: 100%; /* Increase the width to fit the tab */
-    height: 100%; /* Increase the height to fit the tab */
+    width: 100%; 
+    height: 100%; 
 }
 
 .property-details {
@@ -172,7 +171,8 @@ body, html {
 }
 
 .property-details h5 {
-    margin-top: 90px;
+    margin-left: 30px;
     color: #478e13;
     font-size: 20px;
 }
+
