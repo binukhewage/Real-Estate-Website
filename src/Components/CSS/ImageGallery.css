@@ -16,6 +16,7 @@ body, html {
     justify-content: space-between;
     padding: 20px;
     position: relative;
+    flex-wrap: wrap; /* Ensure flex items wrap to new lines as needed */
 }
 
 .all-images {
@@ -27,6 +28,7 @@ body, html {
     background-color: white;
     border-radius: 5px;
     margin-left: 2%; /* Adjust the left margin to create space on the left */
+    box-sizing: border-box;
 }
 
 .large-image {
@@ -78,6 +80,7 @@ body, html {
     border-radius: 5px;
     padding: 20px;
     margin-left: auto; /* Ensures the tabs are aligned to the right of the container */
+    box-sizing: border-box;
 }
 
 /* react-tabs CSS overrides */
@@ -124,6 +127,7 @@ body, html {
     flex-direction: column;
     justify-content: space-between; /* Ensures the property details are at the bottom */
     height: 100%; /* Ensure it takes the full height of the parent */
+    width: 100%; /* Ensure it takes the full width of the parent */
 }
 
 .description h2 {
@@ -138,6 +142,8 @@ body, html {
     color: grey;
     font-size: 20px;
     line-height: 1.5;
+    margin: 0 25px; /* Add horizontal margin to ensure padding inside the container */
+    text-align: justify;
 }
 
 .tab-content {
@@ -164,15 +170,87 @@ body, html {
 
 .property-details {
     display: flex; /* Use flexbox to layout the child elements */
-    gap: 100px; /* Optional: Adds space between the h5 elements */
-    justify-content: center;
+    gap: 20px; /* Adjust gap for better spacing */
+    justify-content: space-evenly; /* Ensure even spacing between the details */
     align-items: center;
-    
+    margin-top: 20px; /* Add margin to separate from description text */
+    flex-wrap: wrap; /* Ensure items wrap on small screens */
 }
 
 .property-details h5 {
-    margin-left: 30px;
     color: #478e13;
     font-size: 20px;
+    margin: 0;
 }
 
+/* Media Queries for Responsiveness */
+@media (max-width: 1200px) {
+    .thumbnail-image-panel {
+        grid-template-columns: repeat(5, 1fr); /* Adjust columns for medium screens */
+    }
+}
+
+@media (max-width: 992px) {
+    .thumbnail-image-panel {
+        grid-template-columns: repeat(4, 1fr); /* Adjust columns for smaller screens */
+    }
+
+    .tabs-container, .all-images {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .desbox {
+        flex-direction: column;
+    }
+
+    .heading h1, .heading p {
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .tabs-container, .all-images {
+        width: 100%;
+    }
+
+    .large-image, .thumbnail-image-panel {
+        width: 100%;
+    }
+
+    .thumbnail-image-panel {
+        grid-template-columns: repeat(3, 1fr); /* Adjust columns for mobile screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .desbox {
+        padding: 10px;
+    }
+
+    .large-image {
+        height: 50%;
+    }
+
+    .thumbnail-image-panel {
+        grid-template-columns: repeat(2, 1fr); /* Adjust columns for smaller mobile screens */
+    }
+
+    .thumbnail-image {
+        height: 70px;
+    }
+
+    .description p {
+        font-size: 16px; /* Smaller font size for mobile */
+        margin: 0 10px; /* Reduce horizontal margin */
+    }
+
+    .property-details {
+        gap: 10px; /* Reduce gap for better spacing */
+    }
+
+    .property-details h5 {
+        font-size: 16px; /* Smaller font size for mobile */
+        margin: 0;
+    }
+}

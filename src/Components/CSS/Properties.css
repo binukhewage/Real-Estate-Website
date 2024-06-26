@@ -1,237 +1,375 @@
+/* Global Styles */
 * {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    margin: 0;    
-    padding: 0;
-    box-sizing: border-box;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  margin: 0;    
+  padding: 0;
+  box-sizing: border-box;
 }
-.properties {
-    margin: 0;
-}
+
 body {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;    
-    background-color:  #131110;
-}
-.title {
-    text-align: center;
-    color: #fff;
-    margin-top: 30px;    
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;    
+  background-color:  #131110;
 }
 
-.box-container {
-    margin-left: 100px;
-    margin-top: 50px;
-    align-items: center;
+.property_name {
+  display: flex;
+  font-size: 1.2rem;
+  font-weight: bold;
+  align-items: left;
+  margin: 10px 0;
 }
-.properties .box-container {
-    display: grid;
-    grid-template-columns: 30% 30% 30%;
-    gap: 20px;
-}
-.image-box {
-    height: 300px;
-    width: 100%;
-    background-size: cover;
-    background-position: center;
-}
-.btn {
-    padding: 10px 100px;
-    background: #478e13;
-    border-radius: 10px;
-    text-decoration: none;
-    color: #fff;
-    font-weight: 600;
-    letter-spacing: 1px;
-    box-shadow: none;
-    transition: 0.5s;
-    margin-top: 20px;
-}
-.btn:hover {
-    box-shadow: 0 0 10px #478e13;
-}
-.propboxes {
-    background-color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 2rem;
-    overflow-x: hidden;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    
-}
-.box-container .propboxes .thumb {
-    position: relative;
-    height: 20rem;
-    overflow: hidden;
-    margin: 1.5rem 0;
-}
-.propboxes:hover {
-    transform: scale(1.05);
-    transition: 1s;
-    border-radius: 10px;
-}
-.save {
-    position: absolute;
-    top: 1rem;
-    right: 0.5rem;
-    z-index: 1;
-    color: #fff;
-}
-.save button:hover {
-    background-color: rgb(255, 0, 0);
-}
+
 .name {
-    text-overflow: ellipsis;
-    overflow-x: hidden;
-    margin-bottom: 10px;
-    color:#3c7310;
-}
-
-.property_name{
+  display: flex;
+  color: green;
+  align-items: left;
+  font-size: 1rem;
   margin-bottom: 10px;
 }
 
 .location {
-    color: grey;
-    font-weight: 600;
-    margin-bottom: 10px;
+  display: flex;
+  align-items: left;
+  font-size: 0.9rem;
+  color: grey;
+  margin-bottom: 10px;
 }
+
 .location i {
-    margin-right: 0.5rem;
-    color: #478e13;
-    margin-bottom: 10px;
+  margin-right: 5px;
 }
+
+/* Container Styles */
+.properties {
+  margin: 0;
+}
+
+
 .flex { 
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-right: 50px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-right: 50px;
 }
+
+.flex p {
+  display: flex;
+  font-size: 1rem;
+  /* align-items: left; */
+}
+
+.flex i {
+  margin-right: 5px;
+}
+
 .price {
-    margin-bottom: 30px;
-    margin-top: 20px;
-}
-.srow {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: #478e13 1px solid;
-    border-radius: 10px;
-}
-.srow .form-label {
-    color: #fff;
-    font-size: 14pt;
-    margin-bottom: 5px;
-}
-.form-select {
-    padding: 3px;
-}
-.form-control {
-    padding: 3px;
-}
-.col-md-2 {
-    padding: 10px;
-}
-.col-md-2 div {
-    display: grid;
-}
-.sbtn {
-    margin-top: 2px;
+  display: flex;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  align-items: left;
 }
 
-.date-added {
-    font-size: 0.9em;
-    color: #666;
-  }
-  
 
 
-/* ----------- search css ----------- */
+.content-container {
+  display: flex;
+  flex-wrap: wrap;
+}
 
+.box-container {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 20px;
+}
+
+.favorites-box {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Card Styles */
+.propboxes {
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  overflow-x: hidden;
+  border-radius: 10px;
+  transition: transform 0.5s;
+  position: relative;
+}
+
+.favorite-card {
+  width: 100%;
+}
+
+.propboxes.dragging {
+  opacity: 0.5; /* Optional: Add visual feedback for dragging */
+}
+
+.propboxes:hover {
+  transform: scale(1.05);
+}
+
+.thumb {
+  width: 100%;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  background-color: #eaeaea; /* Placeholder color */
+}
+
+.property_name, .name, .location, .flex, .price {
+  text-align: center;
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #478e13;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background-color: #218838;
+}
+
+.save {
+  position: absolute;
+  top: 1rem;
+  right: 0.5rem;
+  z-index: 1;
+  color: #fff;
+}
+
+.favorite-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #d3d3d3;
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.favorite-btn.favorited {
+  color: red;
+}
+
+.favorite-btn:hover {
+  color: darkred;
+}
+
+.remove-btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: red;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.remove-btn:hover {
+  background-color: darkred;
+}
+
+/* Search Styles */
 .search {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
+  text-align: center;
+  margin: 20px 0;
+}
+
+.search-fields {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.search-fields input[type="text"],
+.search-fields input[type="number"],
+.search-fields input[type="date"],
+.search-fields button,
+.search-fields select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.search-fields button {
+  background-color: #478e13;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.search-fields button:hover {
+  background-color: #3c7310;
+}
+
+/* Favorites Styles */
+.favorites-list {
+  width: 100%;
+  max-width: 300px;
+  max-height: 600px; /* Set a fixed max height */
+  padding: 10px;
+  border-left: 1px solid #ccc;
+  background: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto; /* Make it scrollable */
+}
+
+.favorites-list h3 {
+  margin-top: 0;
+}
+
+.favorites-list .box-container {
+  flex-direction: column;
+  display: flex;
+}
+
+.favorites-list .propboxes {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.favorites-toggle {
+  text-align: right;
+  padding: 10px;
+}
+
+.favorites-toggle .favorites-button {
+  width: 60px;
+  height: 60px;
+  font-size: 2rem;
+  background-color: green;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.favorites-toggle .favorites-button:hover {
+  background-color: #3c7310;
+  transform: scale(1.05);
+}
+
+/* Popup Styles */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.popup-overlay.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.popup-content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 600px;
+  max-height: 80%;
+  overflow-y: auto;
+  position: relative; /* Add position relative to position the close button */
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
   .search-fields {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 5px;
-    margin-bottom: 10px;
+    flex-direction: column;
+    align-items: center;
   }
-  
+
   .search-fields input[type="text"],
   .search-fields input[type="number"],
   .search-fields input[type="date"],
-  .search-fields button {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .search-fields button {
-    background-color: #478e13;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .search-fields button:hover {
-    background-color: #3c7310;
-  }
-  
-  .name {
-    margin-bottom: 5px;
-  }
-  
-  .location {
-    color: grey;
-    margin-bottom: 5px;
-  }
-  
-  .flex {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 5px;
-  }
-  
-  .price {
-    margin-top: 10px;
-  }
-  
-  .btn {
-    display: block;
-    padding: 10px 20px;
-    background-color: #478e13;
-    color: white;
-    text-align: center;
-    border-radius: 5px;
-    text-decoration: none;
-    margin-top: 10px;
-  }
-  
-  .btn:hover {
-    background-color: #3c7310;
+  .search-fields button,
+  .search-fields select {
+    width: 100%;
+    max-width: 300px;
+    margin: 5px 0;
   }
 
-  .search-fields select {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-right: 10px;
+  .box-container {
+    grid-template-columns: 1fr;
   }
-  
-  
-  .search-fields button {
-    background-color: #478e13;
-    color: white;
-    border: none;
-    cursor: pointer;
+
+  .favorites-list {
+    max-width: 100%;
+    width: 100%;
+    margin-top: 20px;
+    border-left: none;
   }
-  
-  .search-fields button:hover {
-    background-color: #3c7310;
+
+  .favorites-toggle .favorites-button {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    z-index: 1000;
   }
-  
+}
+
+@media (max-width: 480px) {
+  .box-container {
+    grid-template-columns: 1fr;
+  }
+
+  .propboxes {
+    padding: 0.5rem;
+  }
+
+  .btn {
+    padding: 5px;
+  }
+
+  .popup-content {
+    width: 95%;
+    height: 90%;
+  }
+}

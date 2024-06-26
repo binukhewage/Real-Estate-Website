@@ -11,6 +11,7 @@
       "location": "Petts Wood Road, Petts Wood.",
       "picture": "../images/prop1.jpg",
       "floorPlan": "../images/floorPlan1.jpg",
+      "postalCode": 25,
       "mapLocation": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d243647.249902405!2d-0.38177992475022536!3d51.52855777370054!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761cb2046ea4b3%3A0x942c8bb9d77e6f17!2sPetts%20Wood%20Rd%2C%20Petts%20Wood%2C%20Orpington%20BR5%201JR%2C%20UK!5e0!3m2!1sen!2sus!4v1597713398411!5m2!1sen!2sus",
       "url": "properties/prop1.html",
       "added": {
@@ -39,6 +40,7 @@
       "location": "Crofton Road Orpington BR6",
       "picture": "../images/prop2.jpg",
       "floorPlan": "../images/floorPlan2.png",
+      "postalCode": 55,
       "mapLocation": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d243647.249902405!2d-0.38177992475022536!3d51.52855777370054!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761cb2046ea4b3%3A0x942c8bb9d77e6f17!2sCrofton%20Rd%2C%20Orpington%20BR6%208ER%2C%20UK!5e0!3m2!1sen!2sus!4v1597713398411!5m2!1sen!2sus",
       "url": "properties/prop2.html",
       "added": {
@@ -67,6 +69,7 @@
       "location": "Green Street, Greenfield",
       "picture": "../images/prop8.jpg",
       "floorPlan": "../images/floorPlan3.jpeg",
+      "postalCode": 65,
       "mapLocation": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d243647.249902405!2d-0.38177992475022536!3d51.52855777370054!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761cb2046ea4b3%3A0x942c8bb9d77e6f17!2sGreen%20St%2C%20Greenfield%2C%20UK!5e0!3m2!1sen!2sus!4v1597713398411!5m2!1sen!2sus",
       "url": "properties/prop3.html",
       "added": {
@@ -95,6 +98,7 @@
       "location": "City Center Avenue, Urbanville",
       "picture": "../images/prop4.jpg",
       "floorPlan": "../images/floorPlan4.jpg",
+      "postalCode": 25,
       "mapLocation": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d243647.249902405!2d-0.38177992475022536!3d51.52855777370054!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761cb2046ea4b3%3A0x942c8bb9d77e6f17!2sCity%20Center%20Avenue%2C%20Urbanville%2C%20UK!5e0!3m2!1sen!2sus!4v1597713398411!5m2!1sen!2sus",
       "url": "properties/prop4.html",
       "added": {
@@ -123,6 +127,7 @@
       "location": "Mansion Lane, Prestige Estates",
       "picture": "../images/prop5.jpg",
       "floorPlan": "../images/floorPlan5.jpg",
+      "postalCode": 55,
       "mapLocation": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d243647.249902405!2d-0.38177992475022536!3d51.52855777370054!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761cb2046ea4b3%3A0x942c8bb9d77e6f17!2sMansion%20Lane%2C%20Prestige%20Estates%2C%20UK!5e0!3m2!1sen!2sus!4v1597713398411!5m2!1sen!2sus",
       "url": "properties/prop5.html",
       "added": {
@@ -151,6 +156,7 @@
       "location": "Fashion Street, Trendytown",
       "picture": "../images/prop6.jpg",
       "floorPlan": "../images/floorPlan6.jpg",
+      "postalCode": 65,
       "mapLocation": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d243647.249902405!2d-0.38177992475022536!3d51.52855777370054!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761cb2046ea4b3%3A0x942c8bb9d77e6f17!2sFashion%20Street%2C%20Trendytown%2C%20UK!5e0!3m2!1sen!2sus!4v1597713398411!5m2!1sen!2sus",
       "url": "properties/prop6.html",
       "added": {
@@ -179,6 +185,7 @@
       "location": "Horizon Drive, Horizon Heights",
       "picture": "../images/prop7.jpg",
       "floorPlan": "../images/floorPlan7.jpeg",
+      "postalCode": 25,
       "mapLocation": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d243647.249902405!2d-0.38177992475022536!3d51.52855777370054!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48761cb2046ea4b3%3A0x942c8bb9d77e6f17!2sHorizon%20Drive%2C%20Horizon%20Heights%2C%20UK!5e0!3m2!1sen!2sus!4v1597713398411!5m2!1sen!2sus",
       "url": "properties/prop7.html",
       "added": {
