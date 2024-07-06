@@ -7,8 +7,7 @@ import Navbar from '../Navbar/Navbar';
 export default function Properties() {
   const [searchCriteria, setSearchCriteria] = useState({
     type: '',
-    minPrice: '',
-    maxPrice: '',
+    priceRange: '', // Updated state to handle price range
     minBedrooms: '',
     maxBedrooms: '',
     fromDate: '',
@@ -35,8 +34,7 @@ export default function Properties() {
     let filtered = propertyData.properties.filter(property => {
       return (
         (searchCriteria.type === '' || property.type.toLowerCase().includes(searchCriteria.type.toLowerCase())) &&
-        (searchCriteria.minPrice === '' || property.price >= parseInt(searchCriteria.minPrice)) &&
-        (searchCriteria.maxPrice === '' || property.price <= parseInt(searchCriteria.maxPrice)) &&
+        (searchCriteria.priceRange === '' || isWithinPriceRange(property.price, searchCriteria.priceRange)) &&
         (searchCriteria.minBedrooms === '' || property.bedrooms >= parseInt(searchCriteria.minBedrooms)) &&
         (searchCriteria.maxBedrooms === '' || property.bedrooms <= parseInt(searchCriteria.maxBedrooms)) &&
         (searchCriteria.postcodeArea === '' || property.postalCode.toString() === searchCriteria.postcodeArea) &&
@@ -45,6 +43,11 @@ export default function Properties() {
       );
     });
     setFilteredProperties(filtered);
+  };
+
+  const isWithinPriceRange = (price, range) => {
+    const [min, max] = range.split('-').map(price => parseInt(price.replace(/[$,]/g, '')));
+    return price >= min && price <= max;
   };
 
   const getMonthIndex = (month) => {
@@ -98,34 +101,45 @@ export default function Properties() {
     <div>
       <Navbar />
       <div className='properties'>
-        
-          <div className="search">
-            <div className="search-fields">
-              <select name="type" value={searchCriteria.type} onChange={handleInputChange}>
-                <option value="">Any Type</option>
-                <option value="house">House</option>
-                <option value="flat">Flat</option>
-              </select>
-              <input type="number" name="minPrice" placeholder="Min Price" onChange={handleInputChange} />
-              <input type="number" name="maxPrice" placeholder="Max Price" onChange={handleInputChange} />
-              <select name="minBedrooms" value={searchCriteria.minBedrooms} onChange={handleInputChange}>
-                <option value="">Min Bedrooms</option>
-                {[1, 2, 3, 4, 5].map(number => (
-                  <option key={number} value={number}>{number}</option>
-                ))}
-              </select>
-              <select name="maxBedrooms" value={searchCriteria.maxBedrooms} onChange={handleInputChange}>
-                <option value="">Max Bedrooms</option>
-                {[1, 2, 3, 4, 5].map(number => (
-                  <option key={number} value={number}>{number}</option>
-                ))}
-              </select>
-              <input type="text" name="postcodeArea" placeholder="Postcode Area" onChange={handleInputChange} />
-              <input type="date" name="fromDate" placeholder="From Date" onChange={handleInputChange} />
-              <input type="date" name="toDate" placeholder="To Date" onChange={handleInputChange} />
-              <button onClick={handleSearch}>Search</button>
-            </div>
+        <div className="search">
+          <div className="search-fields">
+            <select name="type" value={searchCriteria.type} onChange={handleInputChange}>
+              <option value="">Any Type</option>
+              <option value="house">House</option>
+              <option value="flat">Flat</option>
+            </select>
+            <select name="priceRange" value={searchCriteria.priceRange} onChange={handleInputChange}>
+              <option value="">Select Price Range</option>
+              <option value="300000-400000">$300,000 - $400,000</option>
+              <option value="400000-500000">$400,000 - $500,000</option>
+              <option value="500000-600000">$500,000 - $600,000</option>
+              <option value="600000-700000">$600,000 - $700,000</option>
+              <option value="700000-800000">$700,000 - $800,000</option>
+              <option value="800000-900000">$800,000 - $900,000</option>
+            </select>
+            <select name="minBedrooms" value={searchCriteria.minBedrooms} onChange={handleInputChange}>
+              <option value="">Min Bedrooms</option>
+              {[1, 2, 3, 4, 5].map(number => (
+                <option key={number} value={number}>{number}</option>
+              ))}
+            </select>
+            <select name="maxBedrooms" value={searchCriteria.maxBedrooms} onChange={handleInputChange}>
+              <option value="">Max Bedrooms</option>
+              {[1, 2, 3, 4, 5].map(number => (
+                <option key={number} value={number}>{number}</option>
+              ))}
+            </select>
+            <select name="postcodeArea" value={searchCriteria.postcodeArea} onChange={handleInputChange}>
+              <option value="">Select Postcode Area</option>
+              <option value="25">25</option>
+              <option value="55">55</option>
+              <option value="65">65</option>
+            </select>
+            <input type="date" name="fromDate" placeholder="From Date" onChange={handleInputChange} />
+            <input type="date" name="toDate" placeholder="To Date" onChange={handleInputChange} />
+            <button onClick={handleSearch}>Search</button>
           </div>
+        </div>
         
         <div className="favorites-toggle">
           <button
@@ -134,7 +148,7 @@ export default function Properties() {
             onDrop={handleDrop}
             onDragOver={handleDragOver}
           >
-            {showFavorites ? '❌' : '❤️'}
+            {showFavorites ? '❌' : <i className="fas fa-heart"></i>}
           </button>
         </div>
         <div

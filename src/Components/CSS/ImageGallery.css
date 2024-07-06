@@ -183,6 +183,8 @@ body, html {
     margin: 0;
 }
 
+
+
 /* Media Queries for Responsiveness */
 @media (max-width: 1200px) {
     .thumbnail-image-panel {
