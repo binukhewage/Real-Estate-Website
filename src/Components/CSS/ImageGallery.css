@@ -221,8 +221,35 @@ body, html {
     }
 
     .thumbnail-image-panel {
-        grid-template-columns: repeat(3, 1fr); /* Adjust columns for mobile screens */
+        grid-template-columns: repeat(7, 1fr); /* Adjust columns for mobile screens */
+        margin-top: 10px;
+        
+        width: 100%;
     }
+
+    .location{
+        text-align: center;
+        justify-content: center;
+      }
+    
+      .tabs-container{
+        margin-top: 40px;
+      }
+    
+      .all-images{
+        display: block;
+        margin: 0;
+        
+        overflow: hidden;
+        background-color: black;
+      }
+
+      .large-image{
+        margin: 2px;
+        border: 5px solid white;
+      }
+
+      
 }
 
 @media (max-width: 480px) {

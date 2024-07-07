@@ -6,17 +6,19 @@ import Navbar from '../Navbar/Navbar';
 import propertyData from '../Data/data.json'; // Adjust the path as needed
 import '../CSS/ImageGallery.css'
 
+// This component displays the image gallery and details for a selected property
 export default function ImageGallery() {
-  const { propertyId } = useParams();
-  const [selectedProperty, setSelectedProperty] = useState(null);
+  const { propertyId } = useParams(); // Extract propertyId from the URL parameters
+  const [selectedProperty, setSelectedProperty] = useState(null); // State to store the selected property details
   const [largeImage, setLargeImage] = useState(''); // State for the large image
 
+  // useEffect hook to fetch property data when component mounts or propertyId changes
   useEffect(() => {
-    // Simulate fetching data from propertyData
+    // Function to fetch property data based on propertyId
     const fetchProperty = async () => {
       try {
-        const property = propertyData.properties.find(prop => prop.id === propertyId);
-        setSelectedProperty(property);
+        const property = propertyData.properties.find(prop => prop.id === propertyId); // Find property by id
+        setSelectedProperty(property); // Set the selected property
         if (property) {
           setLargeImage(property.picture); // Set the main picture as the initial large image
         }
@@ -29,25 +31,28 @@ export default function ImageGallery() {
     fetchProperty();
   }, [propertyId]);
 
+  // Render loading message if property data is not yet available
   if (!selectedProperty) {
     return <div>Loading...</div>; // Handle loading state
   }
 
   return (
     <>
-      <Navbar />
+      <Navbar /> {/* Navbar component */}
       <div className="heading">
-        <h1>{selectedProperty.name}</h1>
+        <h1>{selectedProperty.name}</h1> {/* Property name */}
         <p className="location">
           <i className="fas fa-map-marker-alt"></i>
-          <span> {selectedProperty.location}</span>
+          <span> {selectedProperty.location}</span> {/* Property location */}
         </p>
         <div className="desbox">
           <div className="all-images">
+            {/* Display large image */}
             <div
               className="large-image"
               style={{ backgroundImage: `url(${largeImage})` }}
             ></div>
+            {/* Thumbnail images for the gallery */}
             <div className="thumbnail-image-panel">
               {selectedProperty.gallery.map((image, index) => (
                 <div
@@ -69,27 +74,26 @@ export default function ImageGallery() {
 
               <TabPanel>
                 <div className="description">
-                  <h2>{selectedProperty.name}</h2>
-                  <p>{selectedProperty.description}</p>
-                  <br></br>
+                  <h2>{selectedProperty.name}</h2> {/* Property name */}
+                  <p>{selectedProperty.description}</p> {/* Property description */}
+                  <br />
                   <div className="property-details">
-                    <h5>$ {selectedProperty.price}</h5>
-                    <h5><i className="fas fa-bed"></i> {selectedProperty.bedrooms} BedRooms</h5>
-                    <h5><i className="fas fa-building"></i> {selectedProperty.tenure} Tenure</h5>
+                    <h5>$ {selectedProperty.price}</h5> {/* Property price */}
+                    <h5><i className="fas fa-bed"></i> {selectedProperty.bedrooms} BedRooms</h5> {/* Number of bedrooms */}
+                    <h5><i className="fas fa-building"></i> {selectedProperty.tenure} Tenure</h5> {/* Property tenure */}
                   </div>
-                  
-                </div>  
+                </div>
               </TabPanel>
               <TabPanel>
                 <div className='tab-content'>
-                  <img src={selectedProperty.floorPlan} alt="Floor Plan" />
+                  <img src={selectedProperty.floorPlan} alt="Floor Plan" /> {/* Floor plan image */}
                 </div>
               </TabPanel>
               <TabPanel>
                 <div className="tab-content">
                   <iframe 
                     title="Map Location"
-                    src={selectedProperty.mapLocation}
+                    src={selectedProperty.mapLocation} // Map location URL
                     width="600"
                     height="450"
                     style={{ border: 0 }}
@@ -97,7 +101,7 @@ export default function ImageGallery() {
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
                   ></iframe>
-                </div>  
+                </div>
               </TabPanel>
             </Tabs>
           </div>

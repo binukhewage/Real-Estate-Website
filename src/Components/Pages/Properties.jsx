@@ -5,6 +5,7 @@ import propertyData from '../Data/data.json'; // Adjust the path as needed
 import Navbar from '../Navbar/Navbar';
 
 export default function Properties() {
+  // State for search criteria
   const [searchCriteria, setSearchCriteria] = useState({
     type: '',
     priceRange: '', // Updated state to handle price range
@@ -15,21 +16,31 @@ export default function Properties() {
     postcodeArea: ''
   });
 
+  // State for filtered properties
   const [filteredProperties, setFilteredProperties] = useState(propertyData.properties);
+
+  // State for favorite properties
   const [favorites, setFavorites] = useState(() => {
     const savedFavorites = localStorage.getItem('favorites');
     return savedFavorites ? JSON.parse(savedFavorites) : [];
   });
 
+  // State to show favorites list
   const [showFavorites, setShowFavorites] = useState(false);
-  const [showFilter, setShowFilter] = useState(false); // New state for filter toggle
-  const [dragging, setDragging] = useState(false); // State to track dragging
 
+  // State to toggle filter visibility
+  const [showFilter, setShowFilter] = useState(false);
+
+  // State to track dragging
+  const [dragging, setDragging] = useState(false);
+
+  // Handle input changes for search criteria
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setSearchCriteria({ ...searchCriteria, [name]: value });
   };
 
+  // Filter properties based on search criteria
   const handleSearch = () => {
     let filtered = propertyData.properties.filter(property => {
       return (
@@ -45,16 +56,19 @@ export default function Properties() {
     setFilteredProperties(filtered);
   };
 
+  // Check if the property price is within the selected range
   const isWithinPriceRange = (price, range) => {
     const [min, max] = range.split('-').map(price => parseInt(price.replace(/[$,]/g, '')));
     return price >= min && price <= max;
   };
 
+  // Get month index for date comparison
   const getMonthIndex = (month) => {
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     return months.indexOf(month);
   };
 
+  // Toggle favorite property
   const handleFavoriteToggle = (property) => {
     let updatedFavorites;
     if (favorites.some(fav => fav.id === property.id)) {
@@ -66,19 +80,23 @@ export default function Properties() {
     localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
   };
 
+  // Toggle the visibility of favorites list
   const toggleFavoritesList = () => {
     setShowFavorites(!showFavorites);
   };
 
+  // Toggle the filter visibility
   const toggleFilter = () => {
-    setShowFilter(!showFilter); // Toggle the filter visibility
+    setShowFilter(!showFilter);
   };
 
+  // Handle drag start for a property
   const handleDragStart = (event, property) => {
     event.dataTransfer.setData('propertyId', property.id);
-    setDragging(true); // Set dragging state to true
+    setDragging(true);
   };
 
+  // Handle drop event
   const handleDrop = (event) => {
     event.preventDefault();
     const propertyId = event.dataTransfer.getData('propertyId');
@@ -86,15 +104,17 @@ export default function Properties() {
     if (property) {
       handleFavoriteToggle(property);
     }
-    setDragging(false); // Reset dragging state
+    setDragging(false);
   };
 
+  // Prevent default drag over behavior
   const handleDragOver = (event) => {
     event.preventDefault();
   };
 
+  // Reset dragging state on drag end
   const handleDragEnd = () => {
-    setDragging(false); // Reset dragging state
+    setDragging(false);
   };
 
   return (

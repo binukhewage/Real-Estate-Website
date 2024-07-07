@@ -113,6 +113,25 @@
     flex-direction: column;
 }
 
+@media (max-width: 768px){
+    .homedes span{
+        display: none;
+    }
+
+    .homeimagecontainer{
+        width: 20rem;
+        height: 30rem;
+        margin-left: 0;
+        margin-top: 40px;
+        
+    }
+
+    .homebtn{
+       
+    }
+
+}
+
 
 
 
