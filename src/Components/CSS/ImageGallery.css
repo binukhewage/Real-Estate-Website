@@ -190,16 +190,22 @@ body, html {
     .thumbnail-image-panel {
         grid-template-columns: repeat(5, 1fr); /* Adjust columns for medium screens */
     }
+    
 }
 
 @media (max-width: 992px) {
     .thumbnail-image-panel {
         grid-template-columns: repeat(4, 1fr); /* Adjust columns for smaller screens */
+
     }
 
     .tabs-container, .all-images {
         width: 100%;
     }
+
+    .tabs-container{
+        margin-top: 40px;
+      }
 }
 
 @media (max-width: 768px) {
