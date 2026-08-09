@@ -1,77 +1,163 @@
-.navtitle{
-    font-weight: 700;
-    font-size: 2rem;
-    margin: 5px;
+/* ========================================
+   Premium Navbar
+   ======================================== */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 8vw;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.navbar{
-    background-color: #131110;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    gap: 2rem ;
-    color: white;
+/* Dark variant (used on hero) */
+.navbar--dark {
+  color: #F8F6F1;
 }
 
-.navbar ul{
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    display: flex;
-    gap: 3rem;
-    font-size: 20px;
-    margin-right: 10px;
+/* Scrolled state */
+.navbar.scrolled {
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 1px 0 rgba(138, 133, 128, 0.08);
+  padding: 1rem 8vw;
 }
 
-.navbar li:hover{
-    color: #478e13;
+/* Logo */
+.nav-logo {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.7rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: inherit;
+  letter-spacing: -0.02em;
 }
 
-.navbar a{
-    text-decoration: none;
-    color: inherit;
+.nav-logo-dot {
+  color: #C9A96E;
 }
 
-.lg{
-    color: #478e13;
+/* Nav links */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 3rem;
+  padding: 0;
+  margin: 0;
 }
 
+.nav-links a {
+  text-decoration: none;
+  color: inherit;
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  position: relative;
+  padding-bottom: 2px;
+  transition: color 0.3s;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #C9A96E;
+  transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.nav-links a:hover {
+  color: #C9A96E;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Hamburger */
 .menu-toggle {
-    display: none; /* Hide the menu toggle by default */
+  display: none;
+  cursor: pointer;
+  padding: 0.5rem;
 }
 
-/* Mobile responsiveness */
+.hamburger {
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: currentColor;
+  position: relative;
+  transition: background 0.3s;
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 1px;
+  background: currentColor;
+  transition: transform 0.3s;
+}
+
+.hamburger::before { top: -8px; }
+.hamburger::after { top: 8px; }
+
+.hamburger.open {
+  background: transparent;
+}
+
+.hamburger.open::before {
+  transform: rotate(45deg) translate(6px, 6px);
+}
+
+.hamburger.open::after {
+  transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* Mobile */
 @media (max-width: 768px) {
-    .navbar {
-        flex-direction: column;
-        align-items: flex-start;
-    }
+  .navbar {
+    padding: 1.25rem 6vw;
+  }
 
-    .navtitle {
-        font-size: 1.5rem;
-    }
+  .navbar.scrolled {
+    padding: 1rem 6vw;
+  }
 
-    .navbar ul {
-        display: none; /* Hide the menu by default on mobile */
-        flex-direction: column;
-        width: 100%;
-        gap: 1rem;
-        background-color: #131110;
-        padding: 10px 0;
-    }
+  .menu-toggle {
+    display: block;
+  }
 
-    .navbar.show ul {
-        display: flex; /* Show the menu when the navbar has the 'show' class */
-    }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: rgba(10, 10, 10, 0.98);
+    backdrop-filter: blur(20px);
+    padding: 2rem 6vw 2.5rem;
+    gap: 1.5rem;
+    border-top: 1px solid rgba(138, 133, 128, 0.08);
+  }
 
-    .menu-toggle {
-        display: block; /* Show the menu toggle in mobile view */
-        cursor: pointer;
-        font-size: 1.5rem;
-        padding: 10px;
-        position: absolute;
-        top: 20px;
-        right: 20px;
-    }
+  .navbar.show .nav-links {
+    display: flex;
+  }
+
+  .nav-links a {
+    font-size: 0.9rem;
+    letter-spacing: 0.08em;
+  }
 }

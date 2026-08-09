@@ -1,137 +1,900 @@
-.homewrapper{
-    color: white;
-    position: relative;
-    background-color: #131110;
-    padding-bottom: 2rem;
+/* ========================================
+   UOW Properties — Ultra-Luxury Home Design
+   Premium Real Estate Presentation
+   ======================================== */
+
+/* --- Luxury Design Tokens --- */
+:root {
+  /* Core Palette */
+  --ink: #0A0A0A;
+  --paper: #FAF9F6;
+  --gold: #C9A96E;
+  --gold-light: #D4B88C;
+  --gold-dark: #A68B5B;
+  --gold-metallic: linear-gradient(135deg, #C9A96E 0%, #E8D5A3 50%, #C9A96E 100%);
+  
+  /* Neutrals */
+  --stone: #8C857A;
+  --stone-light: #A39E95;
+  --cream: #EDE8E0;
+  --cream-warm: #F5F2EC;
+  --charcoal: #1A1A1A;
+  --deep: #050505;
+  --warm-white: #FAF9F6;
+  
+  /* Shadows & Effects */
+  --soft-shadow: rgba(10, 10, 10, 0.06);
+  --premium-shadow: rgba(10, 10, 10, 0.08);
+  --luxury-shadow: 0 25px 80px rgba(10, 10, 10, 0.12);
+  --gold-glow: 0 0 40px rgba(201, 169, 110, 0.15);
+  
+  /* Spacing Scale */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+  --space-2xl: 6rem;
+  --space-3xl: 8rem;
+  
+  /* Typography Scale */
+  --text-xs: 0.7rem;
+  --text-sm: 0.85rem;
+  --text-base: 1rem;
+  --text-lg: 1.15rem;
+  --text-xl: 1.35rem;
+  --text-2xl: 1.75rem;
+  --text-3xl: 2.5rem;
+  --text-4xl: clamp(3rem, 6vw, 5rem);
+  --text-5xl: clamp(3.5rem, 7vw, 6.5rem);
+  
+  /* Easing Curves */
+  --ease-luxury: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-.homecontainer{
-    justify-content: space-around;
-    align-items: flex-end;
+/* --- Base Typography --- */
+.home-page {
+  font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  overflow-x: hidden;
 }
 
-.homeimagecontainer{
-    width: 30rem;
-    height: 40rem;
-    overflow: hidden;
-    border-radius: 15rem 15rem  0 0 ;
-    border: 8px solid #478e13;
-    
-    margin-left: 30px;    
+.gold { 
+  color: var(--gold);
+  background: var(--gold-metallic);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-.homeimagecontainer>img{
-    width: 100%;
-    height: 100%;
-
+.section-eyebrow {
+  font-family: 'SF Mono', 'Cascadia Code', 'Consolas', monospace;
+  font-size: var(--text-xs);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: var(--space-md);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
 }
 
-/* LEFT SIDE */
-
-.homeleft{
-    gap: 3rem;
+.section-eyebrow::before {
+  content: '';
+  width: 2rem;
+  height: 1px;
+  background: var(--gold);
 }
 
-.hometitle{
-    position: relative;
-    z-index: 1;
-    
+.section-title {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+  font-weight: 400;
+  line-height: 1.1;
+  margin-bottom: var(--space-lg);
+  letter-spacing: -0.02em;
 }
 
-.hometitle h1{
-    font-weight: bold;
-    font-size: 3.8rem ;
-    line-height: 4rem;
-
+.section-desc {
+  color: var(--stone);
+  font-size: var(--text-lg);
+  line-height: 1.8;
+  max-width: 540px;
+  font-weight: 300;
 }
 
-.orangecircle {
-    height: 4rem;
-    width: 4rem;
-    background-color: orange;
-    border-radius: 999px;
-    position: absolute;
-    right: 28%;
-    top: -10%;
-    z-index: -1;
+/* ========================================
+   Hero — Ultra-Premium Luxury
+   ======================================== */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background: var(--ink);
+  color: var(--paper);
+  overflow: hidden;
 }
 
-
-.homebtn{
-    padding: 10px 20px;
-    background: #478e13;
-    border-radius: 40px;
-    text-decoration: none;
-    color: #fff;
-    font-weight: 600;
-    letter-spacing: 1px;
-    box-shadow: 0 0 10px #088f0a;
-    transition: 0.5s;
-    
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 80% 30%, rgba(201, 169, 110, 0.12) 0%, transparent 50%),
+    radial-gradient(ellipse at 10% 90%, rgba(201, 169, 110, 0.05) 0%, transparent 40%),
+    linear-gradient(135deg, rgba(10, 10, 10, 0.3) 0%, rgba(10, 10, 10, 0.8) 100%);
 }
 
-.homebtn:hover{
-    box-shadow: none;
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C9A96E' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.4;
 }
 
-.homedes{
-    margin: 30px 200px 30px 0px;
-    color: grey;
+.hero-content {
+  position: relative;
+  z-index: 1;
+  padding: 12rem 8vw 4rem;
+  max-width: 900px;
 }
 
-
-
-
-
-/* CNAMES */
-.paddings {
-    padding: 1.5rem;
+.hero-accent-line {
+  position: absolute;
+  left: 8vw;
+  top: 25%;
+  width: 1px;
+  height: 50%;
+  background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+  opacity: 0.3;
+  animation: accentPulse 3s ease-in-out infinite;
 }
-.innerWidth {
-    width: 100%;
+
+@keyframes accentPulse {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.5; }
 }
 
-.flexCenter {
-    display: flex;
-    row-gap: 2rem;
-    justify-content: center;
-    align-items: center;
+.hero-eyebrow {
+  font-family: 'SF Mono', 'Cascadia Code', 'Consolas', monospace;
+  font-size: var(--text-xs);
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: var(--space-lg);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-md);
+  opacity: 0;
+  animation: fadeInUp 0.8s var(--ease-luxury) 0.2s forwards;
+}
+
+.hero-eyebrow::before {
+  content: '';
+  width: 3rem;
+  height: 1px;
+  background: var(--gold);
+}
+
+.hero-title {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: var(--text-5xl);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin-bottom: var(--space-lg);
+  opacity: 0;
+  animation: fadeInUp 0.8s var(--ease-luxury) 0.4s forwards;
+}
+
+.hero-title .gold {
+  font-style: italic;
+}
+
+.hero-sub {
+  color: var(--stone);
+  font-size: var(--text-lg);
+  line-height: 1.8;
+  max-width: 520px;
+  margin-bottom: var(--space-xl);
+  font-weight: 300;
+  opacity: 0;
+  animation: fadeInUp 0.8s var(--ease-luxury) 0.6s forwards;
+}
+
+.hero-actions {
+  display: flex;
+  gap: var(--space-lg);
+  align-items: center;
+  opacity: 0;
+  animation: fadeInUp 0.8s var(--ease-luxury) 0.8s forwards;
+}
+
+/* --- Premium Buttons --- */
+.btn-primary {
+  display: inline-block;
+  padding: 1.25rem 3rem;
+  background: var(--gold);
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: var(--text-sm);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 1px solid var(--gold);
+  transition: all 0.5s var(--ease-luxury);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+  transition: left 0.6s var(--ease-luxury);
+}
+
+.btn-primary:hover {
+  background: var(--gold-light);
+  border-color: var(--gold-light);
+  transform: translateY(-3px);
+  box-shadow: var(--gold-glow);
+}
+
+.btn-primary:hover::before {
+  left: 100%;
+}
+
+.btn-ghost {
+  display: inline-block;
+  padding: 1.25rem 3rem;
+  background: transparent;
+  color: var(--paper);
+  text-decoration: none;
+  font-weight: 400;
+  font-size: var(--text-sm);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 1px solid rgba(248, 246, 241, 0.25);
+  transition: all 0.5s var(--ease-luxury);
+}
+
+.btn-ghost:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(201, 169, 110, 0.08);
+}
+
+.btn-outline {
+  display: inline-block;
+  padding: 1.25rem 3rem;
+  background: transparent;
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: var(--text-sm);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 1px solid var(--ink);
+  transition: all 0.5s var(--ease-luxury);
+}
+
+.btn-outline:hover {
+  background: var(--ink);
+  color: var(--paper);
+  transform: translateY(-3px);
+  box-shadow: var(--luxury-shadow);
+}
+
+/* --- Premium Scroll Indicator --- */
+.hero-scroll {
+  position: absolute;
+  bottom: 3rem;
+  left: 8vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  opacity: 0;
+  animation: fadeIn 1s var(--ease-luxury) 1.2s forwards;
+}
+
+.hero-scroll span {
+  font-family: 'SF Mono', 'Cascadia Code', 'Consolas', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--stone);
+  writing-mode: vertical-rl;
+}
+
+.scroll-line {
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  animation: scrollPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(0.7); }
+  50% { opacity: 1; transform: scaleY(1); }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ========================================
+   Premium Stats Bar — Elevated
+   ======================================== */
+.stats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5rem;
+  padding: var(--space-3xl) 8vw;
+  background: var(--cream);
+  border-top: 1px solid rgba(138, 133, 128, 0.08);
+  border-bottom: 1px solid rgba(138, 133, 128, 0.08);
+}
+
+.stat {
+  text-align: center;
+  position: relative;
+}
+
+.stat-number {
+  display: block;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: var(--space-sm);
+  letter-spacing: -0.02em;
+}
+
+.stat-label {
+  font-size: var(--text-xs);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--stone);
+  font-weight: 300;
+}
+
+.stat-divider {
+  width: 1px;
+  height: 80px;
+  background: linear-gradient(to bottom, transparent, rgba(138, 133, 128, 0.25), transparent);
+}
+
+/* ========================================
+   Featured Properties — Luxury Grid
+   ======================================== */
+.featured {
+  padding: var(--space-3xl) 6vw;
+  background: var(--paper);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+}
+
+.section-header .section-desc {
+  margin: 0 auto;
+}
+
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+  margin-bottom: var(--space-2xl);
+}
+
+/* --- Property Card — Premium --- */
+.property-card {
+  text-decoration: none;
+  color: inherit;
+  background: var(--paper);
+  border: 1px solid rgba(138, 133, 128, 0.08);
+  transition: all 0.5s var(--ease-luxury);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.property-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--gold);
+  opacity: 0;
+  transition: opacity 0.5s var(--ease-luxury);
+  pointer-events: none;
+}
+
+.property-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--luxury-shadow);
+}
+
+.property-card:hover::after {
+  opacity: 1;
+}
+
+.property-card-image {
+  position: relative;
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--cream);
+  overflow: hidden;
+}
+
+.property-card-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10, 10, 10, 0.4) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 0.5s var(--ease-luxury);
+}
+
+.property-card:hover .property-card-image::after {
+  opacity: 1;
+}
+
+.property-card-type {
+  position: absolute;
+  top: var(--space-md);
+  left: var(--space-md);
+  padding: 0.4rem 1rem;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: var(--text-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 500;
+  z-index: 1;
+}
+
+.property-card-body {
+  padding: var(--space-lg);
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.property-card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--space-sm);
+}
+
+.property-card-location {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: var(--text-sm);
+  color: var(--stone);
+}
+
+.property-card-location svg {
+  flex-shrink: 0;
+  color: var(--gold);
+}
+
+.property-card-price {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: var(--text-xl);
+  font-weight: 600;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.property-card-name {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: var(--text-2xl);
+  font-weight: 400;
+  margin-bottom: var(--space-sm);
+  line-height: 1.2;
+}
+
+.property-card-details {
+  font-size: var(--text-sm);
+  color: var(--stone);
+  margin-top: auto;
+  padding-top: var(--space-md);
+  border-top: 1px solid rgba(138, 133, 128, 0.08);
+}
+
+.dot {
+  margin: 0 0.5rem;
+}
+
+.featured-cta {
+  text-align: center;
+}
+
+/* ========================================
+   Brand Story — Asymmetric Luxury
+   ======================================== */
+.brand {
+  padding: var(--space-3xl) 6vw;
+  background: var(--cream);
+}
+
+.brand-inner {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: var(--space-2xl);
+  align-items: center;
+}
+
+.brand-text {
+  max-width: 560px;
+}
+
+.brand-desc {
+  color: var(--stone);
+  font-size: var(--text-lg);
+  line-height: 1.8;
+  margin-bottom: var(--space-md);
+  font-weight: 300;
+}
+
+.brand-visual {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.brand-accent {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background:
+    linear-gradient(135deg, var(--charcoal) 0%, var(--ink) 100%);
+  position: relative;
+}
+
+.brand-accent::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23C9A96E' fill-opacity='0.08'%3E%3Cpath d='M20 20.5V18H0v-2h20v-2l2 3-2 3z'/%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.5;
+}
+
+.brand-accent::after {
+  content: '';
+  position: absolute;
+  bottom: -25px;
+  right: -25px;
+  width: 50%;
+  height: 50%;
+  border: 2px solid var(--gold);
+  opacity: 0.2;
+}
+
+.brand-stats {
+  display: flex;
+  gap: var(--space-2xl);
+}
+
+.brand-stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-stat-num {
+  display: block;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: var(--text-3xl);
+  font-weight: 400;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: var(--space-xs);
+}
+
+.brand-stat-label {
+  font-size: var(--text-sm);
+  color: var(--stone);
+  line-height: 1.5;
+  font-weight: 300;
+}
+
+/* ========================================
+   CTA Section — Premium Dark
+   ======================================== */
+.cta-section {
+  padding: var(--space-3xl) 6vw;
+  background: var(--ink);
+  color: var(--paper);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(201, 169, 110, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 50%, rgba(201, 169, 110, 0.05) 0%, transparent 40%);
+}
+
+.cta-inner {
+  max-width: 600px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.cta-title {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 400;
+  line-height: 1.15;
+  margin-bottom: var(--space-lg);
+}
+
+.cta-desc {
+  color: var(--stone-light);
+  font-size: var(--text-lg);
+  line-height: 1.7;
+  margin-bottom: var(--space-xl);
+  font-weight: 300;
+}
+
+/* ========================================
+   Footer — Refined Luxury
+   ======================================== */
+.footer {
+  padding: var(--space-xl) 6vw;
+  background: var(--deep);
+  color: var(--stone);
+  border-top: 1px solid rgba(138, 133, 128, 0.08);
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-logo {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--paper);
+  letter-spacing: -0.02em;
+}
+
+.footer-tagline {
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 0.3rem;
+  color: var(--stone);
+}
+
+.footer-links {
+  display: flex;
+  gap: var(--space-lg);
+}
+
+.footer-links a {
+  color: var(--stone);
+  text-decoration: none;
+  font-size: var(--text-sm);
+  transition: color 0.4s var(--ease-luxury);
+  letter-spacing: 0.05em;
+}
+
+.footer-links a:hover {
+  color: var(--gold);
+}
+
+.footer-copy {
+  font-size: var(--text-xs);
+  color: var(--stone);
+}
+
+/* ========================================
+   Responsive — Luxury Adaptations
+   ======================================== */
+@media (max-width: 1200px) {
+  .featured-grid {
+    gap: var(--space-md);
+  }
+  
+  .brand-inner {
+    gap: var(--space-xl);
+  }
+}
+
+@media (max-width: 1024px) {
+  .featured-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .brand-inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-xl);
+  }
+
+  .brand-text {
+    max-width: 100%;
+  }
+
+  .stats {
     flex-wrap: wrap;
+    gap: var(--space-xl);
+    padding: var(--space-2xl) 6vw;
+  }
 
+  .stat-divider {
+    display: none;
+  }
 }
 
-.flexStart {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
+@media (max-width: 768px) {
+  .hero-content {
+    padding: 8rem 5vw 3rem;
+  }
 
-.flexColCenter {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  .hero-actions {
     flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .featured-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .property-card-image {
+    height: 250px;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    gap: var(--space-lg);
+    text-align: center;
+  }
+
+  .hero-scroll {
+    display: none;
+  }
+
+  .stats {
+    padding: var(--space-xl) 5vw;
+  }
+
+  .brand-stats {
+    gap: var(--space-xl);
+  }
 }
 
-@media (max-width: 768px){
-    .homedes span{
-        display: none;
-    }
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
 
-    .homeimagecontainer{
-        width: 20rem;
-        height: 30rem;
-        margin-left: 0;
-        margin-top: 40px;
-        
-    }
+  .section-title {
+    font-size: 2rem;
+  }
 
-    .homebtn{
-       
-    }
+  .featured {
+    padding: var(--space-2xl) 5vw;
+  }
 
+  .brand {
+    padding: var(--space-2xl) 5vw;
+  }
+
+  .cta-section {
+    padding: var(--space-2xl) 5vw;
+  }
+
+  .btn-primary,
+  .btn-ghost,
+  .btn-outline {
+    padding: 1rem 2rem;
+    width: 100%;
+    text-align: center;
+  }
+
+  .brand-stats {
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
 }
 
+/* --- Reduced Motion --- */
+@media (prefers-reduced-motion: reduce) {
+  .hero-eyebrow,
+  .hero-title,
+  .hero-sub,
+  .hero-actions,
+  .hero-scroll {
+    animation: none;
+    opacity: 1;
+  }
+  
+  .property-card,
+  .btn-primary,
+  .btn-ghost,
+  .btn-outline {
+    transition: none;
+  }
+  
+  .scroll-line {
+    animation: none;
+  }
+}
 
+/* --- Focus States for Accessibility --- */
+.btn-primary:focus-visible,
+.btn-ghost:focus-visible,
+.btn-outline:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
 
+.property-card:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
 
+/* --- Print Styles --- */
+@media print {
+  .hero-scroll,
+  .hero-bg {
+    display: none;
+  }
+  
+  .hero {
+    min-height: auto;
+    padding: 2rem 0;
+  }
+  
+  .btn-primary,
+  .btn-ghost,
+  .btn-outline {
+    border: 1px solid #000;
+    background: transparent;
+    color: #000;
+  }
+}

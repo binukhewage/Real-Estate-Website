@@ -1,48 +1,46 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import '../CSS/Properties.css';
-import propertyData from '../Data/data.json'; // Adjust the path as needed
+import propertyData from '../Data/data.json';
 import Navbar from '../Navbar/Navbar';
 
+const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
 export default function Properties() {
-  // State for search criteria
   const [searchCriteria, setSearchCriteria] = useState({
     type: '',
-    priceRange: '', // Updated state to handle price range
+    priceRange: '',
     minBedrooms: '',
     maxBedrooms: '',
     fromDate: '',
     toDate: '',
-    postcodeArea: ''
+    postcodeArea: '',
+    _showFilter: false
   });
-
-  // State for filtered properties
   const [filteredProperties, setFilteredProperties] = useState(propertyData.properties);
-
-  // State for favorite properties
   const [favorites, setFavorites] = useState(() => {
-    const savedFavorites = localStorage.getItem('favorites');
-    return savedFavorites ? JSON.parse(savedFavorites) : [];
+    const saved = localStorage.getItem('favorites');
+    return saved ? JSON.parse(saved) : [];
   });
-
-  // State to show favorites list
   const [showFavorites, setShowFavorites] = useState(false);
-
-  // State to toggle filter visibility
-  const [showFilter, setShowFilter] = useState(false);
-
-  // State to track dragging
   const [dragging, setDragging] = useState(false);
 
-  // Handle input changes for search criteria
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setSearchCriteria({ ...searchCriteria, [name]: value });
+  // ── Helpers ────────────────────────────────────
+  const getMonthIndex = (month) => MONTHS.indexOf(month);
+
+  const isWithinPriceRange = (price, range) => {
+    const [min, max] = range.split('-').map(p => parseInt(p.replace(/[$,]/g, '')));
+    return price >= min && price <= max;
   };
 
-  // Filter properties based on search criteria
+  // ── Handlers ──────────────────────────────────
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setSearchCriteria(prev => ({ ...prev, [name]: value }));
+  };
+
   const handleSearch = () => {
-    let filtered = propertyData.properties.filter(property => {
+    const filtered = propertyData.properties.filter(property => {
       return (
         (searchCriteria.type === '' || property.type.toLowerCase().includes(searchCriteria.type.toLowerCase())) &&
         (searchCriteria.priceRange === '' || isWithinPriceRange(property.price, searchCriteria.priceRange)) &&
@@ -56,195 +54,271 @@ export default function Properties() {
     setFilteredProperties(filtered);
   };
 
-  // Check if the property price is within the selected range
-  const isWithinPriceRange = (price, range) => {
-    const [min, max] = range.split('-').map(price => parseInt(price.replace(/[$,]/g, '')));
-    return price >= min && price <= max;
-  };
-
-  // Get month index for date comparison
-  const getMonthIndex = (month) => {
-    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    return months.indexOf(month);
-  };
-
-  // Toggle favorite property
   const handleFavoriteToggle = (property) => {
-    let updatedFavorites;
-    if (favorites.some(fav => fav.id === property.id)) {
-      updatedFavorites = favorites.filter(fav => fav.id !== property.id);
-    } else {
-      updatedFavorites = [...favorites, property];
-    }
-    setFavorites(updatedFavorites);
-    localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+    setFavorites(prev => {
+      const exists = prev.some(fav => fav.id === property.id);
+      const updated = exists ? prev.filter(fav => fav.id !== property.id) : [...prev, property];
+      localStorage.setItem('favorites', JSON.stringify(updated));
+      return updated;
+    });
   };
 
-  // Toggle the visibility of favorites list
-  const toggleFavoritesList = () => {
-    setShowFavorites(!showFavorites);
-  };
-
-  // Toggle the filter visibility
-  const toggleFilter = () => {
-    setShowFilter(!showFilter);
-  };
-
-  // Handle drag start for a property
-  const handleDragStart = (event, property) => {
-    event.dataTransfer.setData('propertyId', property.id);
+  // ── Drag & Drop ───────────────────────────────
+  const handleDragStart = (e, property) => {
+    e.dataTransfer.setData('propertyId', property.id);
     setDragging(true);
   };
 
-  // Handle drop event
-  const handleDrop = (event) => {
-    event.preventDefault();
-    const propertyId = event.dataTransfer.getData('propertyId');
-    const property = filteredProperties.find(prop => prop.id === propertyId);
-    if (property) {
-      handleFavoriteToggle(property);
-    }
+  const handleDrop = (e) => {
+    e.preventDefault();
+    const id = e.dataTransfer.getData('propertyId');
+    const property = filteredProperties.find(p => p.id === id);
+    if (property) handleFavoriteToggle(property);
     setDragging(false);
   };
 
-  // Prevent default drag over behavior
-  const handleDragOver = (event) => {
-    event.preventDefault();
-  };
+  const handleDragOver = (e) => { e.preventDefault(); };
+  const handleDragEnd = () => setDragging(false);
 
-  // Reset dragging state on drag end
-  const handleDragEnd = () => {
-    setDragging(false);
-  };
+  // ── Refs / Memos ──────────────────────────────
+  const isFavorited = useMemo(() => {
+    const set = new Set(favorites.map(f => f.id));
+    return (id) => set.has(id);
+  }, [favorites]);
 
   return (
-    <div>
-      <Navbar />
-      <div className='properties'>
-        <div className="search">
-          <div className="search-fields">
-            <select name="type" value={searchCriteria.type} onChange={handleInputChange}>
-              <option value="">Any Type</option>
-              <option value="house">House</option>
-              <option value="flat">Flat</option>
-            </select>
-            <select name="priceRange" value={searchCriteria.priceRange} onChange={handleInputChange}>
-              <option value="">Select Price Range</option>
-              <option value="300000-400000">$300,000 - $400,000</option>
-              <option value="400000-500000">$400,000 - $500,000</option>
-              <option value="500000-600000">$500,000 - $600,000</option>
-              <option value="600000-700000">$600,000 - $700,000</option>
-              <option value="700000-800000">$700,000 - $800,000</option>
-              <option value="800000-900000">$800,000 - $900,000</option>
-            </select>
-            <select name="minBedrooms" value={searchCriteria.minBedrooms} onChange={handleInputChange}>
-              <option value="">Min Bedrooms</option>
-              {[1, 2, 3, 4, 5].map(number => (
-                <option key={number} value={number}>{number}</option>
-              ))}
-            </select>
-            <select name="maxBedrooms" value={searchCriteria.maxBedrooms} onChange={handleInputChange}>
-              <option value="">Max Bedrooms</option>
-              {[1, 2, 3, 4, 5].map(number => (
-                <option key={number} value={number}>{number}</option>
-              ))}
-            </select>
-            <select name="postcodeArea" value={searchCriteria.postcodeArea} onChange={handleInputChange}>
-              <option value="">Select Postcode Area</option>
-              <option value="25">25</option>
-              <option value="55">55</option>
-              <option value="65">65</option>
-            </select>
-            <input type="date" name="fromDate" placeholder="From Date" onChange={handleInputChange} />
-            <input type="date" name="toDate" placeholder="To Date" onChange={handleInputChange} />
-            <button onClick={handleSearch}>Search</button>
-          </div>
+    <div className="properties-page">
+      <Navbar dark={false} />
+
+      {/* ════ Hero Banner ════ */}
+      <section className="properties-hero">
+        <div className="properties-hero-bg" />
+        <div className="properties-hero-content">
+          <p className="hero-eyebrow">UOW Properties</p>
+          <h1 className="hero-title">
+            Our <span className="gold">Portfolio</span>
+          </h1>
+          <p className="hero-sub">
+            Explore our curated collection of exceptional residences.
+            Each property is selected for its character, craftsmanship,
+            and enduring value.
+          </p>
         </div>
-        
-        <div className="favorites-toggle">
+      </section>
+
+      {/* ════ Toolbar ════ */}
+      <div className="props-toolbar">
+        <div className="props-toolbar-inner">
           <button
-            onClick={toggleFavoritesList}
-            className="favorites-button"
+            className="props-filter-toggle"
+            onClick={() => setSearchCriteria(prev => ({ ...prev, _showFilter: !prev._showFilter }))}
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="4" y1="6" x2="20" y2="6" /><line x1="8" y1="12" x2="20" y2="12" /><line x1="12" y1="18" x2="20" y2="18" />
+            </svg>
+            Filters
+          </button>
+          <span className="props-count">{filteredProperties.length} properties</span>
+          <button
+            className={`props-fav-toggle ${showFavorites ? 'active' : ''}`}
+            onClick={() => setShowFavorites(!showFavorites)}
             onDrop={handleDrop}
             onDragOver={handleDragOver}
           >
-            {showFavorites ? '❌' : <i className="fas fa-heart"></i>}
+            <svg width="18" height="18" viewBox="0 0 24 24" fill={favorites.length > 0 ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
+            </svg>
+            <span className="props-fav-badge">{favorites.length}</span>
           </button>
         </div>
-        <div
-          className={`content-container ${showFavorites ? 'show-favorites' : ''}`}
-          onDrop={handleDrop}
-          onDragOver={handleDragOver}
-        >
-          <div className="box-container">
-            {filteredProperties.map((property) => (
+      </div>
+
+      {/* ════ Filters Panel ════ */}
+      <div className={`props-filters ${searchCriteria._showFilter ? 'open' : ''}`}>
+        <div className="props-filters-inner">
+          <div className="props-filter-group">
+            <label>Type</label>
+            <select name="type" value={searchCriteria.type} onChange={handleInputChange}>
+              <option value="">All Types</option>
+              <option value="house">House</option>
+              <option value="flat">Flat</option>
+            </select>
+          </div>
+          <div className="props-filter-group">
+            <label>Price Range</label>
+            <select name="priceRange" value={searchCriteria.priceRange} onChange={handleInputChange}>
+              <option value="">Any Price</option>
+              <option value="300000-400000">$300k – $400k</option>
+              <option value="400000-500000">$400k – $500k</option>
+              <option value="500000-600000">$500k – $600k</option>
+              <option value="600000-700000">$600k – $700k</option>
+              <option value="700000-800000">$700k – $800k</option>
+              <option value="800000-900000">$800k – $900k</option>
+            </select>
+          </div>
+          <div className="props-filter-group">
+            <label>Bedrooms (Min)</label>
+            <select name="minBedrooms" value={searchCriteria.minBedrooms} onChange={handleInputChange}>
+              <option value="">Any</option>
+              {[1, 2, 3, 4, 5].map(n => <option key={n} value={n}>{n}+</option>)}
+            </select>
+          </div>
+          <div className="props-filter-group">
+            <label>Bedrooms (Max)</label>
+            <select name="maxBedrooms" value={searchCriteria.maxBedrooms} onChange={handleInputChange}>
+              <option value="">Any</option>
+              {[1, 2, 3, 4, 5].map(n => <option key={n} value={n}>{n}</option>)}
+            </select>
+          </div>
+          <div className="props-filter-group">
+            <label>Postcode Area</label>
+            <select name="postcodeArea" value={searchCriteria.postcodeArea} onChange={handleInputChange}>
+              <option value="">All Areas</option>
+              <option value="25">Area 25</option>
+              <option value="55">Area 55</option>
+              <option value="65">Area 65</option>
+            </select>
+          </div>
+          <div className="props-filter-group">
+            <label>From Date</label>
+            <input type="date" name="fromDate" value={searchCriteria.fromDate} onChange={handleInputChange} />
+          </div>
+          <div className="props-filter-group">
+            <label>To Date</label>
+            <input type="date" name="toDate" value={searchCriteria.toDate} onChange={handleInputChange} />
+          </div>
+          <button className="props-filter-apply" onClick={handleSearch}>
+            Apply Filters
+          </button>
+        </div>
+      </div>
+      {/* ════ Property Grid ════ */}
+      <div className="props-grid-section">
+        <div className="props-grid">
+          {filteredProperties.length === 0 ? (
+            <div className="props-empty">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg>
+              <h3>No properties found</h3>
+              <p>Try adjusting your filters to discover more listings.</p>
+            </div>
+          ) : (
+            filteredProperties.map((property) => (
               <div
-                className={`propboxes ${dragging ? 'dragging' : ''}`}
+                className={`props-card ${dragging ? 'dragging' : ''}`}
                 key={property.id}
                 draggable
-                onDragStart={(event) => handleDragStart(event, property)}
+                onDragStart={(e) => handleDragStart(e, property)}
                 onDragEnd={handleDragEnd}
               >
-                <div className="thumb" style={{ backgroundImage: `url(${property.picture})` }}>
-                </div>
-                <h3 className="property_name">{property.name}</h3>
-                <h4 className="name">{property.type}</h4>
-                <p className="location">
-                  <i className="fas fa-map-marker-alt"></i>
-                  <span> {property.location}</span>
-                </p>
-                <div className="flex">
-                  <p><i className="fas fa-bed"></i><span> {property.bedrooms}</span></p>
-                  <p><i className="fas fa-bath"></i><span> 2</span></p>
-                </div>
-                <div className="price">
-                  <h3>${property.price}</h3>
-                </div>
-                <button
-                  className={`favorite-btn ${favorites.some(fav => fav.id === property.id) ? 'favorited' : ''}`}
-                  onClick={() => handleFavoriteToggle(property)}
-                >
-                  <i className="fas fa-heart"></i>
-                </button>
-                <Link to={`/Gallery/${property.id}`} className="btn">View Property</Link>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className={`popup-overlay ${showFavorites ? 'show' : ''}`}>
-          <div className="popup-content">
-            <button className="close-btn" onClick={toggleFavoritesList}>×</button>
-            <h3>Favorites</h3>
-            <div className="box-container favorites-box">
-              {favorites.map((property) => (
-                <div className="propboxes favorite-card" key={property.id}>
-                  <div className="thumb" style={{ backgroundImage: `url(${property.picture})` }}></div>
-                  <h3 className="property_name">{property.name}</h3>
-                  <h4 className="name">{property.type}</h4>
-                  <p className="location">
-                    <i className="fas fa-map-marker-alt"></i>
-                    <span> {property.location}</span>
-                  </p>
-                  <div className="flex">
-                    <p><i className="fas fa-bed"></i><span> {property.bedrooms}</span></p>
-                    <p><i className="fas fa-bath"></i><span> 2</span></p>
-                  </div>
-                  <div className="price">
-                    <h3>${property.price}</h3>
-                  </div>
+                <div className="props-card-image">
+                  <div className="props-card-img" style={{ backgroundImage: `url(${property.picture})` }} />
+                  <span className="props-card-badge">{property.type}</span>
                   <button
-                    className="remove-btn"
+                    className={`props-card-fav ${isFavorited(property.id) ? 'favorited' : ''}`}
                     onClick={() => handleFavoriteToggle(property)}
                   >
-                    Remove
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill={isFavorited(property.id) ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
+                    </svg>
                   </button>
-                  <Link to={`/Gallery/${property.id}`} className="btn">View Property</Link>
+                </div>
+                <div className="props-card-body">
+                  <div className="props-card-top">
+                    <h3 className="props-card-name">{property.name}</h3>
+                    <p className="props-card-location">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" /><circle cx="12" cy="10" r="3" />
+                      </svg>
+                      {property.location}
+                    </p>
+                  </div>
+                  <div className="props-card-details">
+                    <span className="props-card-detail">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" /><polyline points="9 22 9 12 15 12 15 22" />
+                      </svg>
+                      {property.bedrooms} bed
+                    </span>
+                    <span className="props-card-detail">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <rect x="2" y="6" width="20" height="12" rx="2" /><circle cx="6" cy="14" r="1" /><circle cx="18" cy="14" r="1" />
+                      </svg>
+                      2 bath
+                    </span>
+                    <span className="props-card-detail props-card-tenure">{property.tenure}</span>
+                  </div>
+                  <div className="props-card-footer">
+                    <span className="props-card-price">${property.price.toLocaleString()}</span>
+                    <Link to={`/Gallery/${property.id}`} className="props-card-cta">
+                      View Details
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
+                      </svg>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            ))
+          )}
+        </div>
+      </div>
+      {/* ════ Favorites Overlay ════ */}
+      <div className={`props-fav-overlay ${showFavorites ? 'show' : ''}`} onClick={() => setShowFavorites(false)}>
+        <div className="props-fav-modal" onClick={e => e.stopPropagation()}>
+          <div className="props-fav-modal-header">
+            <h3>Your Favorites</h3>
+            <button className="props-fav-modal-close" onClick={() => setShowFavorites(false)}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+            </button>
+          </div>
+          {favorites.length === 0 ? (
+            <div className="props-fav-empty">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
+              </svg>
+              <p>No favorites yet. Drag properties here or tap the heart icon to save them.</p>
+            </div>
+          ) : (
+            <div className="props-fav-list">
+              {favorites.map(property => (
+                <div className="props-fav-item" key={property.id}>
+                  <div className="props-fav-item-img" style={{ backgroundImage: `url(${property.picture})` }} />
+                  <div className="props-fav-item-body">
+                    <h4>{property.name}</h4>
+                    <p>{property.location}</p>
+                    <span className="props-fav-item-price">${property.price.toLocaleString()}</span>
+                  </div>
+                  <div className="props-fav-item-actions">
+                    <Link to={`/Gallery/${property.id}`} className="props-fav-item-view">View</Link>
+                    <button className="props-fav-item-remove" onClick={() => handleFavoriteToggle(property)}>Remove</button>
+                  </div>
                 </div>
               ))}
             </div>
-          </div>
+          )}
         </div>
       </div>
+
+      {/* ════ Footer ════ */}
+      <footer className="props-footer">
+        <div className="props-footer-inner">
+          <div className="props-footer-brand">
+            <span className="props-footer-logo">UOW<span className="gold">.</span></span>
+            <p className="props-footer-tagline">Premium Real Estate</p>
+          </div>
+          <div className="props-footer-links">
+            <Link to="/">Home</Link>
+            <Link to="/properties">Properties</Link>
+          </div>
+          <div className="props-footer-copy">
+            &copy; {new Date().getFullYear()} UOW Properties. All rights reserved.
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
